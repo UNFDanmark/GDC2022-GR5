@@ -10,6 +10,14 @@ public class ManMove : MonoBehaviour
     public bool Issprinting = false;
     public float sprintingMultiplier;
 
+
+    public bool isCrouching = false;
+    public float crouchingMultiplier;
+
+    public CharacterController controller;
+    public float standigHeight = 1.8f;
+    public float crouchingHeight = 1.25f;
+
     Rigidbody rb;
 
 
@@ -17,7 +25,7 @@ public class ManMove : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
+        controller = gameObject.GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -26,7 +34,7 @@ public class ManMove : MonoBehaviour
         MoveHandler();
     }
     void MoveHandler()
-    {
+    {  
         float moveInput = Input.GetAxis("Vertical");//Variable for move input
         float turnInput = Input.GetAxis("Horizontal");
 
@@ -35,7 +43,7 @@ public class ManMove : MonoBehaviour
         Vector3 newVelocity = transform.forward * moveSpeed;
         newVelocity.y = rb.velocity.y;
 
-        gameObject.GetComponent<Transform>().Rotate(Vector3.up * turnInput * turnSpeed); // Rotates the tank around Y-axis
+        gameObject.GetComponent<Transform>().Rotate(Vector3.up * turnInput * turnSpeed); // Rotates the Man around Y-axis
 
         
 
@@ -46,9 +54,21 @@ public class ManMove : MonoBehaviour
         }
         else
         {
-            rb.velocity = newVelocity; //Sets velocity of the tank to movespeed in the forward direction
+            rb.velocity = newVelocity; //Sets velocity of the Man to movespeed in the forward direction
         }
-    }
-
+        isCrouching = (Input.GetKey(KeyCode.RightShift));
+        if (isCrouching == true)
+        {
+            controller.height = crouchingHeight;
+            newVelocity *= crouchingMultiplier;
+        }
+        else
+        {
+            controller.height = standigHeight;
+        }
+        
 }
+} 
+
+
 

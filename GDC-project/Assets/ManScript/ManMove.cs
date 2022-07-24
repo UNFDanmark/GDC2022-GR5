@@ -37,21 +37,16 @@ public class ManMove : MonoBehaviour
 
         gameObject.GetComponent<Transform>().Rotate(Vector3.up * turnInput * turnSpeed); // Rotates the tank around Y-axis
 
-        rb.velocity = newVelocity; //Sets velocity of the tank to movespeed in the forward direction
         
-        if (Input.GetKey(KeyCode.LeftShift))//sprint button
-        {
-            Issprinting = true;
 
+        Issprinting = (Input.GetKey(KeyCode.LeftShift)); //sprint button
+        if (Issprinting)
+        {
+            rb.velocity = newVelocity * sprintingMultiplier;
         }
         else
         {
-            Issprinting = false;
-        }
-
-        if (Issprinting == true)
-        {
-            moveInput *= sprintingMultiplier;
+            rb.velocity = newVelocity; //Sets velocity of the tank to movespeed in the forward direction
         }
     }
 

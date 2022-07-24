@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -22,7 +24,7 @@ public class EnemyScript : MonoBehaviour
 
     private void OnDestroy()
     {
-        pointHandler.GetComponent<PointHandlerScript>().RegisterKill();
+       //pointHandler.GetComponent<PointHandlerScript>().RegisterKill();
     }
 
     void moveHandler()
@@ -35,5 +37,4 @@ public class EnemyScript : MonoBehaviour
 
 
     }
-}
 }

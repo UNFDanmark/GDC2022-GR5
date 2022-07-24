@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameController
   - Ground
+  - PointHandler
   layers:
   - Default
   - TransparentFX

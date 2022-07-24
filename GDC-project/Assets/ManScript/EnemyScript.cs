@@ -24,7 +24,7 @@ public class EnemyScript : MonoBehaviour
 
     private void OnDestroy()
     {
-       //pointHandler.GetComponent<PointHandlerScript>().RegisterKill();
+       // pointHandler.GetComponent<PointHandlerScript>().RegisterKill();
     }
 
     void moveHandler()

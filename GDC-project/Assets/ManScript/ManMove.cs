@@ -7,17 +7,22 @@ public class ManMove : MonoBehaviour
     public float speed = 0.4F;
     public float turnSpeed = 1;
 
+    bool isGrounded;
+
     public bool Issprinting = false;
     public float sprintingMultiplier;
-
 
     public bool isCrouching = false;
     public float crouchingMultiplier;
 
-    public CharacterController controller;
-    public float standigHeight = 1.8f;
-    public float crouchingHeight = 1.25f;
+    public Collider StandingCollider;
+    public float Crouchtimer = 0.3F;
+    float CrouchTimeNow = 0f;
 
+    public Transform NormalV;
+    public Transform CrouchV;
+
+    
     Rigidbody rb;
 
 
@@ -25,7 +30,6 @@ public class ManMove : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        controller = gameObject.GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -45,29 +49,42 @@ public class ManMove : MonoBehaviour
 
         gameObject.GetComponent<Transform>().Rotate(Vector3.up * turnInput * turnSpeed); // Rotates the Man around Y-axis
 
-        
+        isCrouching = (Input.GetKey(KeyCode.RightShift));
 
         Issprinting = (Input.GetKey(KeyCode.LeftShift)); //sprint button
         if (Issprinting)
         {
             rb.velocity = newVelocity * sprintingMultiplier;
         }
+        else if (isCrouching)
+        {
+            StandingCollider.enabled = false;
+            rb.velocity = newVelocity * crouchingMultiplier;
+
+            CrouchTimeNow = CrouchTimeNow + Time.deltaTime;
+
+            if (CrouchTimeNow < Crouchtimer)
+            {
+                Camera.main.transform.position = Vector3.MoveTowards(NormalV.position, CrouchV.position, CrouchTimeNow / Crouchtimer);
+            }
+            else
+            {
+                Camera.main.transform.position = Vector3.MoveTowards(NormalV.position, CrouchV.position, 1f);
+            }
+        }
         else
         {
             rb.velocity = newVelocity; //Sets velocity of the Man to movespeed in the forward direction
+             
         }
-        isCrouching = (Input.GetKey(KeyCode.RightShift));
-        if (isCrouching == true)
+      
+        if (!isCrouching)
         {
-            controller.height = crouchingHeight;
-            newVelocity *= crouchingMultiplier;
+            CrouchTimeNow = 0f;
+            Camera.main.transform.position = NormalV.position;
+            // lAV NOGET code til at smooth move kamera op igen????
         }
-        else
-        {
-            controller.height = standigHeight;
-        }
-        
-}
+    }
 } 
 
 

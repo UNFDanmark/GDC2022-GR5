@@ -49,14 +49,13 @@ public class ManMove : MonoBehaviour
 
         gameObject.GetComponent<Transform>().Rotate(Vector3.up * turnInput * turnSpeed); // Rotates the Man around Y-axis
 
-        isCrouching = (Input.GetKey(KeyCode.RightShift));
+
+        isCrouching = (Input.GetKey(KeyCode.RightShift));//CrouchSystem and Sprint
 
         Issprinting = (Input.GetKey(KeyCode.LeftShift)); //sprint button
-        if (Issprinting)
-        {
-            rb.velocity = newVelocity * sprintingMultiplier;
-        }
-        else if (isCrouching)
+        
+        
+        if (isCrouching) //Crouch butto
         {
             StandingCollider.enabled = false;
             rb.velocity = newVelocity * crouchingMultiplier;
@@ -72,6 +71,11 @@ public class ManMove : MonoBehaviour
                 Camera.main.transform.position = Vector3.MoveTowards(NormalV.position, CrouchV.position, 1f);
             }
         }
+        else if (Issprinting)
+            {
+                StandingCollider.enabled = true;
+                rb.velocity = newVelocity * sprintingMultiplier;
+            }
         else
         {
             rb.velocity = newVelocity; //Sets velocity of the Man to movespeed in the forward direction
@@ -80,6 +84,7 @@ public class ManMove : MonoBehaviour
       
         if (!isCrouching)
         {
+            StandingCollider.enabled = true;
             CrouchTimeNow = 0f;
             Camera.main.transform.position = NormalV.position;
             // lAV NOGET code til at smooth move kamera op igen????

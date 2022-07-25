@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class EnemyScript : MonoBehaviour
     public float moveSpeed;
 
     // Start is called before the first frame update
-    void Start()
+    void Start() //her finder Enemy player
     {
         player = GameObject.FindWithTag("Player");
         pointHandler = GameObject.FindWithTag("PointHandler");
@@ -20,14 +21,10 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         moveHandler();
-    }
+        //CheckForSceneRestart();
+    }    
 
-    private void OnDestroy()
-    {
-       // pointHandler.GetComponent<PointHandlerScript>().RegisterKill();
-    }
-
-    void moveHandler()
+    void moveHandler() //her er direction altså vi tager A-B vektor 
     {
         Vector3 enemyPos = transform.position;
         Vector3 playerPos = player.transform.position;
@@ -35,6 +32,27 @@ public class EnemyScript : MonoBehaviour
 
         gameObject.GetComponent<Rigidbody>().velocity = moveDirection * moveSpeed;
 
+    }
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            GameObject ManPlayer = collision.gameObject;
+            ManMove ManComponent = ManPlayer.GetComponent<ManMove>();
+            SceneManager.LoadScene("SampleScene");
+            bool isEnemy = other.gameObject.tag == "Enemy";
+                 if (isEnemy)
+                 {
+                     Destroy(other.gameObject);
+                 }
+
+        }   
+   
+        //FindAllExplodables();
+    }
+
 
     }
-}
+
+

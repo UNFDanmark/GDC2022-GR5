@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ManMove : MonoBehaviour
 {
+    //moving system
     public float speed = 0.4F;
     public float turnSpeed = 1;
 
-    bool isGrounded;
-
+    //sprint system
     public bool Issprinting = false;
     public float sprintingMultiplier;
 
+    //crouching system
     public bool isCrouching = false;
     public float crouchingMultiplier;
-
     public Collider StandingCollider;
     public float Crouchtimer = 0.3F;
     float CrouchTimeNow = 0f;
@@ -22,7 +23,10 @@ public class ManMove : MonoBehaviour
     public Transform NormalV;
     public Transform CrouchV;
 
-    
+    //life system
+    public int maxHealth = 3;
+    int currentHealth;
+
     Rigidbody rb;
 
 
@@ -37,7 +41,7 @@ public class ManMove : MonoBehaviour
     {
         MoveHandler();
     }
-    void MoveHandler()
+    void MoveHandler() //moving system TOY
     {  
         float moveInput = Input.GetAxis("Vertical");//Variable for move input
         float turnInput = Input.GetAxis("Horizontal");
@@ -48,6 +52,7 @@ public class ManMove : MonoBehaviour
         newVelocity.y = rb.velocity.y;
 
         gameObject.GetComponent<Transform>().Rotate(Vector3.up * turnInput * turnSpeed); // Rotates the Man around Y-axis
+
 
 
         isCrouching = (Input.GetKey(KeyCode.RightShift));//CrouchSystem and Sprint
@@ -90,7 +95,17 @@ public class ManMove : MonoBehaviour
             // lAV NOGET code til at smooth move kamera op igen????
         }
     }
-} 
+    public void Attack(int damage)
+    {
+        currentHealth -= currentHealth - damage;
+
+        if (currentHealth == 0)
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
+    }
+
+    } 
 
 
 

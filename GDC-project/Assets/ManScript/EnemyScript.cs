@@ -22,7 +22,7 @@ public class EnemyScript : MonoBehaviour
     {
         moveHandler();
         //CheckForSceneRestart();
-    }    
+    }
 
     void moveHandler() //her er direction altså vi tager A-B vektor 
     {
@@ -33,26 +33,30 @@ public class EnemyScript : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().velocity = moveDirection * moveSpeed;
 
     }
-    
+
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             GameObject ManPlayer = collision.gameObject;
             ManMove ManComponent = ManPlayer.GetComponent<ManMove>();
-            SceneManager.LoadScene("SampleScene");
-            bool isEnemy = other.gameObject.tag == "Enemy";
-                 if (isEnemy)
-                 {
-                     Destroy(other.gameObject);
-                 }
+            SceneManager.LoadScene("horro game");
 
-        }   
-   
+
+        }
+
         //FindAllExplodables();
     }
+    private void onCollisionEnter(Collision other)
+    { 
 
+        bool isEnemy = other.gameObject.tag == "Enemy";
+        if (isEnemy)
+        {
+            Destroy(other.gameObject);
+        }
 
     }
+}
 
 

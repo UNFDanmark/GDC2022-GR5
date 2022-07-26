@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class EnemyScript : MonoBehaviour
@@ -20,11 +21,13 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveHandler();
+        //moveHandler();
         //CheckForSceneRestart();
+
+        gameObject.GetComponent<NavMeshAgent>().destination = player.transform.position;
     }
 
-    void moveHandler() //her er direction altså vi tager A-B vektor 
+    /*void moveHandler() //her er direction altså vi tager A-B vektor 
     {
         Vector3 enemyPos = transform.position;
         Vector3 playerPos = player.transform.position;
@@ -32,7 +35,7 @@ public class EnemyScript : MonoBehaviour
 
         gameObject.GetComponent<Rigidbody>().velocity = moveDirection * moveSpeed;
 
-    }
+    }*/
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -57,6 +60,8 @@ public class EnemyScript : MonoBehaviour
         }
 
     }
+
+
 }
 
 

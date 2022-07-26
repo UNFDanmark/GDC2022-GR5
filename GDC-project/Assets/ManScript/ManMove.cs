@@ -27,6 +27,9 @@ public class ManMove : MonoBehaviour
     public int maxHealth = 3;
     int currentHealth;
 
+    //win system
+    bool Key = false;
+
     Rigidbody rb;
 
 
@@ -42,7 +45,7 @@ public class ManMove : MonoBehaviour
         MoveHandler();
     }
     void MoveHandler() //moving system TOY
-    {  
+    {
         float moveInput = Input.GetAxis("Vertical");//Variable for move input
         float turnInput = Input.GetAxis("Horizontal");
 
@@ -58,8 +61,8 @@ public class ManMove : MonoBehaviour
         isCrouching = (Input.GetKey(KeyCode.RightShift));//CrouchSystem and Sprint
 
         Issprinting = (Input.GetKey(KeyCode.LeftShift)); //sprint button
-        
-        
+
+
         if (isCrouching) //Crouch butto
         {
             StandingCollider.enabled = false;
@@ -77,16 +80,16 @@ public class ManMove : MonoBehaviour
             }
         }
         else if (Issprinting)
-            {
-                StandingCollider.enabled = true;
-                rb.velocity = newVelocity * sprintingMultiplier;
-            }
+        {
+            StandingCollider.enabled = true;
+            rb.velocity = newVelocity * sprintingMultiplier;
+        }
         else
         {
             rb.velocity = newVelocity; //Sets velocity of the Man to movespeed in the forward direction
-             
+
         }
-      
+
         if (!isCrouching)
         {
             StandingCollider.enabled = true;
@@ -105,7 +108,26 @@ public class ManMove : MonoBehaviour
         }
     }
 
-} 
+    
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == ("Key"))
+        {
+            Destroy(collision.gameObject);
+            Key = true;
+
+        }    
+
+        if (collision.gameObject.tag == ("Door"))
+        {
+            Collider.enabled = false;
+
+            
+        }
+    }
+
+}
+
 
 
 

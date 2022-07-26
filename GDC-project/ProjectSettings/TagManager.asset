@@ -7,6 +7,8 @@ TagManager:
   - GameController
   - Ground
   - PointHandler
+  - Key
+  - Door
   layers:
   - Default
   - TransparentFX

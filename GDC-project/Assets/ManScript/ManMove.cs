@@ -29,6 +29,7 @@ public class ManMove : MonoBehaviour
 
     //win system
     bool Key = false;
+    public GameObject WinCanvas;
 
     Rigidbody rb;
 
@@ -120,7 +121,7 @@ public class ManMove : MonoBehaviour
 
         if (collision.gameObject.tag == ("Door"))
         {
-            Collider.enabled = false;
+            WinCanvas.SetActive(true);
 
             
         }

@@ -3769,7 +3769,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &346704720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5758,6 +5758,7 @@ MonoBehaviour:
   NormalV: {fileID: 1419121062}
   CrouchV: {fileID: 563567366}
   maxHealth: 3
+  WinCanvas: {fileID: 346704719}
 --- !u!136 &527029268
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9128,7 +9129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: -9}
+  m_AnchoredPosition: {x: 83, y: -9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &764055937
@@ -13148,16 +13149,16 @@ RectTransform:
   m_GameObject: {fileID: 1120775306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 145}
-  m_LocalScale: {x: 11.454, y: 7.0577, z: 7.0002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 346704723}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: -83}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1120775308
 MonoBehaviour:
@@ -24884,7 +24885,6 @@ GameObject:
   - component: {fileID: 543450652998375522}
   - component: {fileID: 3469287836847642567}
   - component: {fileID: 1711813856276505357}
-  - component: {fileID: 3469287836847642568}
   - component: {fileID: 1950831192}
   m_Layer: 0
   m_Name: key
@@ -25005,18 +25005,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148791526104}
   m_Mesh: {fileID: -3420748097414225915, guid: 56814a400489aa74683056ec5e08b202, type: 3}
---- !u!114 &3469287836847642568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148791526104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4941f215d4ad9742a6b85cef571536f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4336879938301844388
 GameObject:
   m_ObjectHideFlags: 0

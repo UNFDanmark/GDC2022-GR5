@@ -119,7 +119,7 @@ public class ManMove : MonoBehaviour
 
         }    
 
-        if (collision.gameObject.tag == ("Door"))
+        if (collision.gameObject.tag == ("Door") && Key == true) 
         {
             WinCanvas.SetActive(true);
 

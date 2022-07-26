@@ -59,7 +59,7 @@ public class ManMove : MonoBehaviour
 
 
 
-        isCrouching = (Input.GetKey(KeyCode.RightShift));//CrouchSystem and Sprint
+        isCrouching = (Input.GetButton(KeyCode.RightShift));//CrouchSystem and Sprint
 
         Issprinting = (Input.GetKey(KeyCode.LeftShift)); //sprint button
 

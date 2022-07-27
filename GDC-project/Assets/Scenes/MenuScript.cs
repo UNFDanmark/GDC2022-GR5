@@ -7,7 +7,7 @@ public class MenuScript : MonoBehaviour
 {
     public void PlayButton()
     {
-        SceneManager.LoadScene("World map");
+        SceneManager.LoadScene("CutScene");
     }
 
     public void ExitButton()

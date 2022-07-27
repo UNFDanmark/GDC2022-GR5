@@ -43,7 +43,7 @@ public class EnemyScript : MonoBehaviour
         {
             GameObject ManPlayer = collision.gameObject;
             ManMove ManComponent = ManPlayer.GetComponent<ManMove>();
-            SceneManager.LoadScene("horro game");
+            SceneManager.LoadScene("LoseScene");
 
 
         }

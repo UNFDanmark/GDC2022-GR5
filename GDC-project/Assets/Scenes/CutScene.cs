@@ -26,7 +26,7 @@ public class CutScene : MonoBehaviour
         {
             if(buffer >= buffermax)
             {
-                SceneManager.LoadScene("World map");
+                SceneManager.LoadScene("main scene backup");
 
             }
             else

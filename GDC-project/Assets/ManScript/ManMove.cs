@@ -31,6 +31,9 @@ public class ManMove : MonoBehaviour
     bool Key = false;
     public GameObject WinCanvas;
 
+    //lose system
+    public GameObject LoseCanvas;
+
     Rigidbody rb;
 
 
@@ -105,6 +108,7 @@ public class ManMove : MonoBehaviour
 
         if (currentHealth == 0)
         {
+            LoseCanvas.SetActive(true);
             SceneManager.LoadScene("SampleScene");
         }
     }
@@ -126,7 +130,7 @@ public class ManMove : MonoBehaviour
             
         }
     }
-
+    
 }
 
 

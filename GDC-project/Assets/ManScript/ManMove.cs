@@ -34,6 +34,14 @@ public class ManMove : MonoBehaviour
     //lose system
     public GameObject LoseCanvas;
 
+    //Sound walkin system
+    public AudioClip walking_sound_one;
+    public AudioClip walking_sound_two;
+    public AudioClip walking_sound_three;
+    public AudioSource Sound;
+    int current_walking_sound;
+    List<AudioClip> walking_sounds;
+
     Rigidbody rb;
 
 
@@ -41,6 +49,12 @@ public class ManMove : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Sound.clip = walking_sound_one;
+        current_walking_sound = 1;
+        walking_sounds = new List<AudioClip>();
+        walking_sounds.Add(walking_sound_one);
+        walking_sounds.Add(walking_sound_two);
+        walking_sounds.Add(walking_sound_three);
     }
 
     // Update is called once per frame
@@ -59,6 +73,16 @@ public class ManMove : MonoBehaviour
         newVelocity.y = rb.velocity.y;
 
         gameObject.GetComponent<Transform>().Rotate(Vector3.up * turnInput * turnSpeed); // Rotates the Man around Y-axis
+
+        if (moveSpeed != 0)
+        {
+            if (Sound.isPlaying == false)
+            {
+                current_walking_sound = (current_walking_sound + 1) % 2;
+                Sound.clip = walking_sounds[current_walking_sound];
+                Sound.Play();
+            }
+        }
 
 
 
@@ -108,8 +132,8 @@ public class ManMove : MonoBehaviour
 
         if (currentHealth == 0)
         {
-            LoseCanvas.SetActive(true);
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("LoseScene");
+
         }
     }
 

@@ -142,8 +142,19 @@ public class ManMove : MonoBehaviour
     {
         if (collision.gameObject.tag == ("Key"))
         {
+            print("hit key");
+            AudioSource audioKey= collision.gameObject.GetComponent<AudioSource>();
+            //audioKey.PlayOneShot(audioKey.clip);
+            print(audioKey.clip);
+            AudioSource.PlayClipAtPoint(audioKey.clip, collision.transform.position, 1);
+
+
             Destroy(collision.gameObject);
             Key = true;
+
+            
+
+
 
         }    
 
@@ -154,7 +165,7 @@ public class ManMove : MonoBehaviour
             
         }
     }
-    
+   
 }
 
 

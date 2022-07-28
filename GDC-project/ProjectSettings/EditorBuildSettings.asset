@@ -17,11 +17,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoseScene.unity
     guid: f558a7a733bef2e45b88fda165798d16
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/horro game.unity
     guid: 46245c4fef0de134db7f98369ff31ada
   - enabled: 1
-    path: Assets/main scene backup.unity
+    path: Assets/Scenes/main scene backup.unity
     guid: ff49c7c6bf9f61c4a9528dd2a2548253
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: d10895760ab82484c9be9a0bba5544c4,

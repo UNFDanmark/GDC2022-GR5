@@ -19,7 +19,7 @@ public class LoseScript : MonoBehaviour
 
     public void Lose()
     {
-        SceneManager.LoadScene("horro game");
+        SceneManager.LoadScene("main scene backup");
     }
 }
 

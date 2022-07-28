@@ -1,0 +1,2 @@
+3D exploration based horror game set in a dark cellar wherein you must attempt to escape a monster by finding the key to unlock the only door out.
+This low poly low texture horror game draws inspiration from many japanese games of the same genre, and thus aims to scare the player not by using the latest and fanciest of textures, but by ambiance, feel, and overall game design.
